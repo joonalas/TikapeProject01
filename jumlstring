@@ -1,0 +1,3 @@
+[Vakuutustyyppi|nimi: String;perushinta: Double],[Henkiloasiakas|kotiosoite: String;tulotaso: Integer;ammatti: String;sairaudet: String;riskiharrastukset: String],[Asiakas|nimi: String;kotipaikka: String],[Yritysasiakas|kayntiosoite: String;y-tunnus: String;toimiala: String;liikevaihto: Integer],[Vakuutus|hinta: Double;alku: Date;loppu: Date;voimassa: Boolean],[Korvaus|maara: Double;paivays: Date]
+,
+[Vakuutus]*-1[Henkiloasiakas],[Vakuutus]*-1[Yritysasiakas],[Asiakas]1-1[Henkiloasiakas],[Asiakas]1-1[Yritysasiakas],[Vakuutus]1-*[Korvaus],[Vakuutus]*-1[Vakuutustyyppi]
