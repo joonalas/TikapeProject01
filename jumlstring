@@ -1,3 +1,34 @@
 [Vakuutustyyppi|nimi: String;perushinta: Double],[Henkiloasiakas|kotiosoite: String;tulotaso: Integer;ammatti: String;sairaudet: String;riskiharrastukset: String],[Asiakas|nimi: String;kotipaikka: String],[Yritysasiakas|kayntiosoite: String;y-tunnus: String;toimiala: String;liikevaihto: Integer],[Vakuutus|hinta: Double;alku: Date;loppu: Date;voimassa: Boolean],[Korvaus|maara: Double;paivays: Date]
 ,
 [Vakuutus]*-1[Henkiloasiakas],[Vakuutus]*-1[Yritysasiakas],[Asiakas]1-1[Henkiloasiakas],[Asiakas]1-1[Yritysasiakas],[Vakuutus]1-*[Korvaus],[Vakuutus]*-1[Vakuutustyyppi]
+
+
+
+[Vakuutustyyppi|(pk)id: Integer;nimi: String;perushinta: Double],[Henkiloasiakas|(pk)id: Integer;(fk)asiakas_id: Integer;kotiosoite: String;tulotaso: Integer;ammatti: String;sairaudet: String;riskiharrastukset: String],[Asiakas|(pk)id: Integer;nimi: String;kotipaikka: String],[Yritysasiakas|(pk)id: Integer;(fk)asiakas_id: Integer;kayntiosoite: String;y-tunnus: String;toimiala: String;liikevaihto: Integer],[Vakuutus|(pk)id: Integer;(fk)henkiloasiakas_id: Integer;(fk)yritysasiakas_id: Integer;(fk)vakuutustyyppi_id: Integer;hinta: Double;alku: Date;loppu: Date;voimassa: Boolean],[Korvaus|(pk)id: Integer;(fk)vakuutus_id: Integer;maara: Double;paivays: Date]
+,
+[Vakuutus]*-1[Henkiloasiakas],[Vakuutus]*-1[Yritysasiakas],[Asiakas]^-[Henkiloasiakas],[Asiakas]^-[Yritysasiakas],[Vakuutus]1-*[Korvaus],[Vakuutus]*-1[Vakuutustyyppi]
+
+
+
+
+
+
+
+
+
+[Vakuutustyyppi|(pk)id: Integer;nimi: String;perushinta: Double],[Henkiloasiakas|(pk)id: Integer;(fk)asiakas_id: Integer;kotiosoite: String;tulotaso: Integer;ammatti: String;sairaudet: String;riskiharrastukset: String],[Asiakas|(pk)id: Integer;nimi: String;kotipaikka: String],[Yritysasiakas|(pk)id: Integer;(fk)asiakas_id: Integer;kayntiosoite: String;y-tunnus: String;toimiala: String;liikevaihto: Integer],[Vakuutus|(pk)id: Integer;(fk)henkiloasiakas_id: Integer;(fk)yritysasiakas_id: Integer;(fk)vakuutustyyppi_id: Integer;hinta: Double;alku: Date;loppu: Date;voimassa: Boolean],[Korvaus|(pk)id: Integer;(fk)vakuutus_id: Integer;maara: Double;paivays: Date]
+,
+[Vakuutus]*-1[Henkiloasiakas],[Vakuutus]*-1[Yritysasiakas],[Asiakas]^-[Henkiloasiakas],[Asiakas]^-[Yritysasiakas],[Vakuutus]1-*[Korvaus],[Vakuutus]*-1[Vakuutustyyppi]
+
+
+
+[Vakuutustyyppi|nimi: String;perushinta: Double],[Henkiloasiakas|kotiosoite: String;tulotaso: Integer;ammatti: String;sairaudet: String;riskiharrastukset: String],[Asiakas|nimi: String;kotipaikka: String],[Yritysasiakas|kayntiosoite: String;y-tunnus: String;toimiala: String;liikevaihto: Integer],[Vakuutus|hinta: Double;alku: Date;loppu: Date;voimassa: Boolean],[Korvaus|maara: Double;paivays: Date],[Riskiharrastus|nimi: String;kerroin: Double],[Sairaus|nimi: String;kerroin: Double]
+,
+[Vakuutus]*-1[Henkiloasiakas],[Vakuutus]*-1[Yritysasiakas],[Asiakas]^-[Henkiloasiakas],[Asiakas]^-[Yritysasiakas],[Vakuutus]1-*[Korvaus],[Vakuutus]*-1[Vakuutustyyppi],[Henkiloasiakas]*-*[Sairaus],[Henkiloasiakas]*-*[Riskiharrastus]
+
+
+
+
+[Vakuutustyyppi|(pk)id: Integer;nimi: String;perushinta: Double],[Henkiloasiakas|(pk)id: Integer;(fk)asiakas_id: Integer;kotiosoite: String;tulotaso: Integer;ammatti: String;sairaudet: String;riskiharrastukset: String],[Asiakas|(pk)id: Integer;nimi: String;kotipaikka: String],[Yritysasiakas|(pk)id: Integer;(fk)asiakas_id: Integer;kayntiosoite: String;y-tunnus: String;toimiala: String;liikevaihto: Integer],[Vakuutus|(pk)id: Integer;(fk)henkiloasiakas_id: Integer;(fk)yritysasiakas_id: Integer;(fk)vakuutustyyppi_id: Integer;hinta: Double;alku: Date;loppu: Date;voimassa: Boolean],[Korvaus|(pk)id: Integer;(fk)vakuutus_id: Integer;maara: Double;paivays: Date],[Riskiharrastus|(pk)id: Integer;nimi: String;kerroin: Double],[Sairaus|(pk)id: Integer;nimi: String;kerroin: Double],[HenkiloasiakasRiskiharrastus|(fk)henkiloasiakas_id: Integer;(fk)riskiharrastus_id: Integer],[HenkiloasiakasSairaus|(fk)henkiloasiakas_id: Integer;(fk)sairaus_id: Integer]
+,
+[Vakuutus]*-1[Henkiloasiakas],[Vakuutus]*-1[Yritysasiakas],[Asiakas]^-[Henkiloasiakas],[Asiakas]^-[Yritysasiakas],[Vakuutus]1-*[Korvaus],[Vakuutus]*-1[Vakuutustyyppi],[Henkiloasiakas]1-*[HenkiloasiakasSairaus],[Henkiloasiakas]1-*[HenkiloasiakasRiskiharrastus],[HenkiloasiakasSairaus]*-1[Sairaus],[HenkiloasiakasRiskiharrastus]*-1[Riskiharrastus]
